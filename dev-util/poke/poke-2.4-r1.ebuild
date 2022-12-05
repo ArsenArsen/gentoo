@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit elisp-common flag-o-matic
+inherit elisp-common flag-o-matic toolchain-funcs
 
 DESCRIPTION="Extensible editor for structured binary data"
 HOMEPAGE="https://www.jemarch.net/poke"
@@ -55,6 +55,13 @@ BDEPEND="
 "
 
 SITEFILE="50${PN}-gentoo.el"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && ! tc-is-gcc && use pvm-profiling
+	then
+		die "The pvm-profiling USE flag requires GCC"
+	fi
+}
 
 pkg_setup() {
 	use emacs && elisp-check-emacs-version

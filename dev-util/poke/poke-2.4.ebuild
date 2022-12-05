@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Extensible editor for structured binary data"
 HOMEPAGE="https://www.jemarch.net/poke"
@@ -29,6 +29,13 @@ BDEPEND="sys-devel/flex
 	sys-devel/bison
 	sys-apps/help2man
 	virtual/pkgconfig"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && ! tc-is-gcc && use pvm-profiling
+	then
+		die "The pvm-profiling USE flag requires GCC"
+	fi
+}
 
 src_configure() {
 	# See bug 858461.
