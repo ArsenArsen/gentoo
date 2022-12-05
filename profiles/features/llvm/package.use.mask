@@ -7,3 +7,7 @@ dev-lang/rust -llvm-libunwind
 
 # libquadmath is gcc-specific
 dev-lang/perl quadmath
+
+# Arsen Arsenović <arsen@aarsen.me> (2022-12-05)
+# This feature requires GCC: bug #883887
+dev-util/poke pvm-profiling
