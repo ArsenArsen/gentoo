@@ -33,6 +33,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arsen Arsenović <arsen@gentoo.org> (2024-08-02)
+# Guile rework masks.  Mask all packages or package versions that are
+# being bumped as part of the Guile reslotting process.
+# Masked until the whole Guile ecosystem is updated.
+dev-scheme/guile:2.2
+dev-scheme/guile:3.0
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-29)
 # Superseded by media-libs/libv4l[utils].
 # Removal on 2024-08-29. Bug #936674.
