@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile.eclass
+# @PROVIDES: guile-utils
 # @MAINTAINER:
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
@@ -91,6 +92,7 @@ guile_copy_sources() {
 # Initialize the environment for a single build variant.  See
 # guile_foreach_impl.
 _guile_multibuild_wrapper() {
+	local GUILE_CURRENT_VERSION="${MULTIBUILD_VARIANT}"
 	debug-print-function ${FUNCNAME} "${@}" "on ${MULTIBUILD_VARIANT}"
 
 	local -x PKG_CONFIG_PATH="${PKG_CONFIG_PATH}"
