@@ -22,6 +22,10 @@ esac
 if [[ ! "${_GUILE_UTILS}" ]]; then
 _GUILE_UTILS=foo
 
+inherit toolchain-funcs
+
+BDEPEND="virtual/pkgconfig"
+
 # @ECLASS_VARIABLE: GUILE_COMPAT
 # @REQUIRED
 # @PRE_INHERIT
@@ -171,6 +175,47 @@ guile_unstrip_ccache() {
 				  -name '*.go' \
 				  -path "*/usr/$(get_libdir)/guile/*/site-ccache/*" \
 				  -print0 || die) || die
+}
+
+# @FUNCTION: guile_export
+# @USAGE: [GUILE|GUILD|GUILE_SITECCACHEDIR|GUILE_SITEDIR]...
+# @DESCRIPTION:
+# Exports a given variable for the selected Guile variant.
+#
+# Supported variables are:
+#
+# - GUILE - Path to the Guile executable,
+# - GUILD - Path to the guild executable,
+# - GUILE_SITECCACHEDIR - Path to the site-ccache directory,
+# - GUILE_SITEDIR - Path to the site Scheme directory
+guile_export() {
+	local gver
+	if [[ "${GUILE_CURRENT_VERSION}" ]]; then
+		gver="${GUILE_CURRENT_VERSION}"
+	elif [[ "${GUILE_SELECTED_TARGET}" ]]; then
+		gver="${GUILE_SELECTED_TARGET}"
+	else
+		die "Calling guile_export outside of a Guile build context?"
+	fi
+
+	_guile_pcvar() {
+		$(tc-getPKG_CONFIG) --variable="$1" guile-"${gver}" || die
+	}
+
+	for var; do
+		case "${var}" in
+			GUILE) export GUILE="$(_guile_pcvar guile)" ;;
+			GUILD) export GUILD="$(_guile_pcvar guild)" ;;
+			GUILE_SITECCACHEDIR)
+				GUILE_SITECCACHEDIR="$(_guile_pcvar siteccachedir)"
+				export GUILE_SITECCACHEDIR
+				;;
+			GUILE_SITEDIR)
+				export GUILE_SITEDIR="$(_guile_pcvar sitedir)"
+				;;
+			*) die "Unknown variable '${var}'" ;;
+		esac
+	done
 }
 
 fi  # _GUILE_UTILS
