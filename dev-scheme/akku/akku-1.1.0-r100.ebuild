@@ -24,7 +24,7 @@ SLOT="0"
 RESTRICT="strip test"
 
 RDEPEND="
-	${GUILE_DEPENDS}
+	${GUILE_DEPS}
 	net-misc/curl[ssl]
 "
 DEPEND="${RDEPEND}"
