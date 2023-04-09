@@ -39,6 +39,7 @@
 # Masked until the whole Guile ecosystem is updated.
 dev-scheme/guile:2.2
 dev-scheme/guile:3.0
+>=sys-devel/make-4.4.1-r100
 
 # James Le Cuirot <chewi@gentoo.org> (2024-07-29)
 # Superseded by media-libs/libv4l[utils].
