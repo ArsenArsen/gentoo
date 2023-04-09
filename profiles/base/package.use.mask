@@ -577,7 +577,7 @@ net-misc/curl nghttp3
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
-www-client/elinks guile
+<www-client/elinks-0.16.0-r100 guile
 
 # Kent Fredric <kentnl@gentoo.org> (2019-08-07)
 # Newer versions of nqp need newer versions of jdk to run on the jvm,

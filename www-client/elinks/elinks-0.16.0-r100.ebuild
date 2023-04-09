@@ -3,7 +3,6 @@
 
 EAPI=8
 
-# Only version queried by meson.build.
 GUILE_COMPAT=( 3_0 )
 
 PYTHON_COMPAT=( python3_{9..10} )
