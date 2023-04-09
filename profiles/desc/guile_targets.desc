@@ -1,0 +1,7 @@
+# Copyright 2023 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of GUILE_TARGETS USE_EXPAND flags.
+
+2_2 - Build only for GNU Guile 2.2.
+3_0 - Build only for GNU Guile 2.2.
