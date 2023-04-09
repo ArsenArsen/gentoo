@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="strip"
 
-RDEPEND="${GUILE_DEPENDS}"
+RDEPEND="${GUILE_DEPS}"
 DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/texinfo"
 
