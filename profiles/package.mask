@@ -46,6 +46,7 @@ www-apps/haunt
 >=app-shells/gash-0.3.0-r100
 >=dev-scheme/akku-1.1.0-r100
 >=dev-scheme/bytestructures-2.0.1-r100
+>=dev-scheme/fibers-1.2.0-r100
 
 # Matthew Thode <prometheanfire@gentoo.org> (2023-04-08)
 # upstream has been dead for nearly five years
