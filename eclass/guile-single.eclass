@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile-single.eclass
+# @PROVIDES: guile-utils
 # @MAINTAINER:
 # Gentoo Scheme project <scheme@gentoo.org>
 # @AUTHOR:
@@ -99,17 +100,20 @@ guile-single_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	guile_set_common_vars
-	local guilefound=
+
+	GUILE_SELECTED_TARGET=
 	for ver in "${GUILE_COMPAT[@]}"; do
 		debug-print "${FUNCNAME}: checking for ${ver}"
 		use "guile_single_target_${ver}" || continue
-		guilefound="${ver/_/.}"
+		GUILE_SELECTED_TARGET="${ver/_/.}"
 		break
 	done
-	[[ "${guilefound}" ]] || die "No GUILE_SINGLE_TARGET specified."
+
+	[[ ${GUILE_SELECTED_TARGET} ]] \
+		|| die "No GUILE_SINGLE_TARGET specified."
 
 	export PKG_CONFIG_PATH
-	guile_filter_pkgconfig_path "${guilefound}"
+	guile_filter_pkgconfig_path "${GUILE_SELECTED_TARGET}"
 }
 
 # @FUNCTION: guile-single_src_install
